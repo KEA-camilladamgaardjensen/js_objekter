@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="liste-container"></section>
+    <template>
+      <article id="dyr">
+        <h3></h3>
+        <img src="" alt="" />
+        <p id="type">Type:</p>
+        <p id="levested">Levested:</p>
+      </article>
+    </template>
+
+    <script>
+      // let dyr = {
+      //   dyr: "Gris",
+      //   type: "pattedyr",
+      //   billede: "http://mabe-kea.dk/E19/pics/pig.png",
+      //   levested: "svinefarme",
+      // };
+
+      // console.log(
+      //   `dyr: ${dyr.dyr} type: ${dyr.type} billede: ${dyr.billede} levested: ${dyr.levested}`
+      // );
+
+      // const destination = document.querySelector("#dyr");
+      // const dyret = `dyr: ${dyr.dyr} type: ${dyr.type} levested: ${dyr.levested}`;
+      // destination.querySelector("h3").textContent = dyr.dyr;
+      // destination.querySelector("img").src = dyr.billede;
+      // destination.querySelector("#type").textContent = dyr.type;
+      // destination.querySelector("#levested").textContent = dyr.levested;
+
+      let array = [
+        {
+          dyr: "frø",
+          type: "amfibie",
+          levested: "frøfarm",
+          billede: "http://mabe-kea.dk/E19/pics/frog.png",
+        },
+        {
+          dyr: "gris",
+          type: "pattedyr",
+          levested: "grisefarm",
+          billede: "http://mabe-kea.dk/E19/pics/pig.png",
+        },
+        {
+          dyr: "ræv",
+          type: "pattedyr",
+          levested: "rævefarm",
+          billede: "http://mabe-kea.dk/E19/pics/fox.png",
+        },
+        {
+          dyr: "sild",
+          type: "fisk",
+          levested: "sildefarm",
+          billede: "http://mabe-kea.dk/E19/pics/sild.jpg",
+        },
+        {
+          dyr: "krokodille",
+          type: "krybdyr",
+          levested: "krokodillefarm",
+          billede: "http://mabe-kea.dk/E19/pics/kroko.jpg",
+        },
+      ];
+
+      console.log(array);
+
+      // const listevisning = document.querySelector("#liste");
+      // //løb listen igennem og indsæt i #liste
+      // array.forEach((array) => {
+      //   //placer listen i html
+      //   listevisning.innerHTML += `<p>${array.dyr} ${array.type} ${array.levested}</p>`;
+      // });
+
+      document.addEventListener("DOMContentLoaded", start);
+      function start() {
+        console.log("start");
+
+        const container = document.querySelector("#liste-container");
+        const dyreTemplate = document.querySelector("template");
+        // løb personlisten igennem og indsæt data i en template
+        array.forEach((array) => {
+          // placer dyr i html
+          let klon = dyreTemplate.cloneNode(true).content;
+          klon.querySelector("h3").textContent = array.dyr;
+          klon.querySelector("img").src = array.billede;
+          klon.querySelector("#type").textContent = array.type;
+          klon.querySelector("#levested").textContent = array.levested;
+          container.appendChild(klon);
+        });
+      }
+    </script>
+
+    <style>
+      article {
+        border: 1px solid black;
+      }
+    </style>
+  </body>
+</html>
